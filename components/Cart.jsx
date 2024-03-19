@@ -25,7 +25,7 @@ const Cart = () => {
       // Handle any unexpected errors
       console.error("Error fetching cart:", error);
     }
-  }, [userId]);
+  }, [update]);
 
   const updateCart = async (cart) => {
     const response = await fetch(`/api/user/${userId}/cart`, {
@@ -40,7 +40,7 @@ const Cart = () => {
   };
 
   const removeFromCart = (cartItem) => {
-    cartItem?.quantity === 1;
+    cartItem.quantity = 1;
     const newCart = cart.filter((item) => item?.workId !== cartItem?.workId);
     setWorkList(newCart);
     toast.success(`Product removed from cart.`);
@@ -50,13 +50,17 @@ const Cart = () => {
   const increaseQty = (cartItem) => {
     const newCart = cart?.map((item) => {
       if (item === cartItem) {
-        item.quantity += 1;
-        toast.success(
-          `${item.quantity} ${item.title
-            .split(" ")
-            .slice(0, 2)
-            .join(" ")} added in cart. `
-        );
+        if (item?.quantity < 10) {
+          item.quantity++;
+          toast.success(
+            `${item.quantity} ${item.title
+              .split(" ")
+              .slice(0, 2)
+              .join(" ")} added in cart. `
+          );
+        } else {
+          toast.error(`You can't order more than 10 products at a time. `);
+        }
 
         return item;
       } else return item;
@@ -69,15 +73,13 @@ const Cart = () => {
     const newCart = cart?.map((item) => {
       if (item === cartItem && item.quantity > 1) {
         item.quantity -= 1;
-        if (item.quantity > 1) {
+        if (item?.quantity > 1) {
           toast.success(
             `${item.quantity}  ${item.title
               .split(" ")
               .slice(0, 2)
               .join(" ")} remains in cart. `
           );
-        } else {
-          toast.success(`You can't decrease the quantity less than 1. `);
         }
         return item;
       } else return item;
