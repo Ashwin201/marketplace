@@ -127,7 +127,9 @@ function Navbar() {
                             openMenu ? "flex" : "hidden"
                           }`}
                         >
-                          <ThemeSwitcher showText={true} />
+                          <div onClick={() => setMenuOpen(false)}>
+                            <ThemeSwitcher showText={true} />
+                          </div>
                           <hr className="mb-2 mt-1" />
                           <Link
                             onClick={() => setMenuOpen(false)}
