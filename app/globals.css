@@ -2,32 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+input,
+textarea,
+button,
+span,
+div,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+a:focus,
+a:visited,
+a:active,
+span:focus,
+span:visited,
+span:active,
+div:focus,
+div:visited,
+div:active {
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* hide Scroll bar from chrome, safari and opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* hide Scroll bar from firefox */
+html {
+  scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  overflow-x: hidden;
+  /* hide Scroll bar from Edge ,I.E*/
+  -ms-overflow-style: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.box {
+  /* color: black; */
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 200px;
+  /* background: #f8f9fa;  */
+  background-image: linear-gradient(
+    to left top,
+    #ffffff,
+    #fdfdff,
+    #fafbff,
+    #f6f9ff,
+    #f1f8ff
+  );
+}
+.dark .box {
+  background: #000000;
+}
+@media (max-width: 1200px) {
+  .box {
+    padding: 12px 150px;
+  }
+}
+@media (max-width: 991px) {
+  .box {
+    padding: 12px 90px;
+  }
+}
+@media (max-width: 750px) {
+  .box {
+    padding: 12px 50px;
+  }
+}
+@media (max-width: 470px) {
+  .box {
+    padding: 12px 12px;
   }
 }
