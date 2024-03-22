@@ -1,4 +1,5 @@
-import Wishlist from "@/components/Wishlist";
+import dynamic from "next/dynamic";
+const Wishlist = dynamic(() => import("@/components/Wishlist"));
 
 export const metadata = {
   title: "Wishlist",

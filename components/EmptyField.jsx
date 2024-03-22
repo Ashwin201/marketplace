@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { BiShoppingBag } from "react-icons/bi";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";

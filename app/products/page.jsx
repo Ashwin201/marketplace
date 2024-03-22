@@ -1,5 +1,6 @@
-import Categories from "@/components/Categories";
-import React from "react";
+import dynamic from "next/dynamic";
+const Categories = dynamic(() => import("@/components/Categories"));
+
 export const metadata = {
   title: "Popular Products",
   description: "Discover, Shop and Sell!",

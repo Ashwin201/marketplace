@@ -1,4 +1,5 @@
-import Orders from "@/components/Orders";
+import dynamic from "next/dynamic";
+const Orders = dynamic(() => import("@/components/Orders"));
 
 export const metadata = {
   title: "Your Orders",

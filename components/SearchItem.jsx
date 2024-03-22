@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
-import EmptyField from "./EmptyField";
 import search from "@/public/search.png.webp";
 import nodata from "@/public/noproduct.webp";
 import Link from "next/link";
 import Image from "next/image";
-import CartSkeleton from "./Skeletons/CartSkeleton";
-import SearchSkeleton from "./Skeletons/WishlistSkeleton";
+import dynamic from "next/dynamic";
+const SearchSkeleton = dynamic(() => import("./Skeletons/WishlistSkeleton"));
+const EmptyField = dynamic(() => import("./EmptyField"));
 const SearchItem = () => {
   const [query, setQuery] = useState("");
   const [workList, setWorkList] = useState([]);

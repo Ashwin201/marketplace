@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+
+import dynamic from "next/dynamic";
+const Navbar = dynamic(() => import("@/components/Navbar"));
+const Footer = dynamic(() => import("@/components/Footer"));
 import ModeProvider from "@/Providers/ModeProvider";
 import AuthProvider from "@/Providers/AuthProvider";
 import { Toaster } from "react-hot-toast";

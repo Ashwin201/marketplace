@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { categories } from "@/data";
-import WorkList from "./WorkList";
-import CardSkeleton from "./Skeletons/CardSkeleton";
-import WorkContainer from "./WorkContainer";
+
+import dynamic from "next/dynamic";
+const CardSkeleton = dynamic(() => import("./Skeletons/CardSkeleton"));
+const WorkContainer = dynamic(() => import("./WorkContainer"));
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [workList, setWorkList] = useState([]);

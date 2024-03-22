@@ -1,7 +1,6 @@
-import Categories from "@/components/Categories";
-import Home from "@/components/Home";
-import React from "react";
-
+import dynamic from "next/dynamic";
+const Home = dynamic(() => import("@/components/Home"));
+const Categories = dynamic(() => import("@/components/Categories"));
 const HomePage = () => {
   return (
     <>

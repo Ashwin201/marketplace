@@ -1,5 +1,6 @@
-import React from "react";
-import WorkList from "./WorkList";
+import dynamic from "next/dynamic";
+const WorkList = dynamic(() => import("./WorkList"));
+
 const WorkContainer = ({ workList }) => {
   return (
     <div className="container   mx-auto">

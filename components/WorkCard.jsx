@@ -11,7 +11,10 @@ import {
 } from "react-icons/io";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import WishListButton from "./WishListButton";
+
+import dynamic from "next/dynamic";
+const WishListButton = dynamic(() => import("./WishListButton"));
+
 import { MdAccountCircle } from "react-icons/md";
 const WorkCard = ({ work }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

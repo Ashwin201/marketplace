@@ -1,14 +1,17 @@
 "use client";
-import Breadcrumb from "./Breadcrumb";
-import ShareButtons from "./ShareButtons";
-import WorkDetailSkeleton from "./Skeletons/WorkDetailSkeleton";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import MoreProducts from "./MoreProducts";
 import { useSession } from "next-auth/react";
 import { IoIosArrowBack, IoIosArrowForward, IoIosImages } from "react-icons/io";
-import WishListButton from "./WishListButton";
-import CartButton from "./CartButton";
+import dynamic from "next/dynamic";
+const Breadcrumb = dynamic(() => import("./Breadcrumb"));
+const ShareButtons = dynamic(() => import("./ShareButtons"));
+const MoreProducts = dynamic(() => import("./MoreProducts"));
+const WishListButton = dynamic(() => import("./WishListButton"));
+const WorkDetailSkeleton = dynamic(() =>
+  import("./Skeletons/WorkDetailSkeleton")
+);
+const CartButton = dynamic(() => import("./CartButton"));
 import { useRouter } from "next/navigation";
 import { MdOutlineEditNote } from "react-icons/md";
 const WorkDetail = ({ work, workId }) => {

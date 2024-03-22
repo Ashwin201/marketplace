@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import CardSkeleton from "./Skeletons/CardSkeleton";
-
-import WorkCard from "./WorkCard";
+import dynamic from "next/dynamic";
+const CardSkeleton = dynamic(() => import("./Skeletons/CardSkeleton"));
+const WorkCard = dynamic(() => import("./WorkCard"));
 const MoreProducts = ({ productId }) => {
   const [workList, setWorkList] = useState([]);
   const [loading, setLoading] = useState(true);

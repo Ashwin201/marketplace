@@ -1,6 +1,7 @@
-import EmptyField from "@/components/EmptyField";
-import WorkDetail from "@/components/WorkDetail";
-import React from "react";
+import dynamic from "next/dynamic";
+const WorkDetail = dynamic(() => import("@/components/WorkDetail"));
+const EmptyField = dynamic(() => import("@/components/EmptyField"));
+
 import img from "@/public/no-product.webp";
 
 export async function generateMetadata({ params }) {

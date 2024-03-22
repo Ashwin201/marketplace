@@ -1,11 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import CardSkeleton from "./Skeletons/CardSkeleton";
-import WorkCard from "./WorkCard";
 import { useSession } from "next-auth/react";
-import EmptyField from "./EmptyField";
 import img from "@/public/nodata.webp";
 import { IoIosCreate } from "react-icons/io";
+
+import dynamic from "next/dynamic";
+const CardSkeleton = dynamic(() => import("./Skeletons/CardSkeleton"));
+const WorkCard = dynamic(() => import("./WorkCard"));
+const EmptyField = dynamic(() => import("./EmptyField"));
 const Dashboard = () => {
   const [workList, setWorkList] = useState([]);
   const [loading, setLoading] = useState(true);

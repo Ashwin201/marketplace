@@ -4,9 +4,10 @@ import img from "../public/notordered.webp";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import WishlistSkeleton from "./Skeletons/WishlistSkeleton";
 import { BiShoppingBag } from "react-icons/bi";
-import EmptyField from "./EmptyField";
+import dynamic from "next/dynamic";
+const WishlistSkeleton = dynamic(() => import("./Skeletons/WishlistSkeleton"));
+const EmptyField = dynamic(() => import("./EmptyField"));
 const Orders = () => {
   const { data: session } = useSession();
   const orders = session?.user?.order?.slice().reverse();

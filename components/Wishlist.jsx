@@ -1,12 +1,14 @@
 "use client";
 import { MdDeleteOutline, MdOutlineDelete } from "react-icons/md";
-import EmptyField from "./EmptyField";
+
 import img from "@/public/wishlist.webp";
 import { useSession } from "next-auth/react";
 import { BiShoppingBag } from "react-icons/bi";
 
 import { useRouter } from "next/navigation";
-import WishListButton from "./WishListButton";
+import dynamic from "next/dynamic";
+const WishListButton = dynamic(() => import("./WishListButton"));
+const EmptyField = dynamic(() => import("./EmptyField"));
 import Link from "next/link";
 const Wishlist = () => {
   const router = useRouter();

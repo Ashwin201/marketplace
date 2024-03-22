@@ -1,5 +1,5 @@
-import SearchItem from "@/components/SearchItem";
-import React from "react";
+import dynamic from "next/dynamic";
+const SearchItem = dynamic(() => import("@/components/SearchItem"));
 export const metadata = {
   title: "Search Products",
   description: "Discover, Shop and Sell!",

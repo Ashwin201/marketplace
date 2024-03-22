@@ -1,6 +1,7 @@
-import React from "react";
-import WorkCard from "./WorkCard";
-import EmptyField from "./EmptyField";
+import dynamic from "next/dynamic";
+const WorkCard = dynamic(() => import("./WorkCard"));
+const EmptyField = dynamic(() => import("./EmptyField"));
+
 import img from "@/public/noposts.webp";
 import { IoCreate } from "react-icons/io5";
 const WorkList = ({ data }) => {

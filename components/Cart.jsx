@@ -7,8 +7,10 @@ import img from "@/public/empty-cart.webp";
 import { BiShoppingBag } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
-import CartSkeleton from "./Skeletons/CartSkeleton";
-import CheckoutBtn from "./CheckoutBtn";
+import dynamic from "next/dynamic";
+const CartSkeleton = dynamic(() => import("./Skeletons/CartSkeleton"));
+const CheckoutBtn = dynamic(() => import("./CheckoutBtn"));
+
 import { useRouter } from "next/navigation";
 const Cart = () => {
   const { data: session, update } = useSession();
