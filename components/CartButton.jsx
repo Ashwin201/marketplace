@@ -1,6 +1,5 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React from "react";
 import { IoMdCart } from "react-icons/io";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";

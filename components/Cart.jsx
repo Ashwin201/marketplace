@@ -14,6 +14,7 @@ const CheckoutBtn = dynamic(() => import("./CheckoutBtn"));
 import { useRouter } from "next/navigation";
 const Cart = () => {
   const { data: session, update } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
   const [workList, setWorkList] = useState([]);
   const [loading, setLoading] = useState(true);
   const cart = session?.user?.cart;
@@ -42,17 +43,20 @@ const Cart = () => {
   };
 
   const removeFromCart = (cartItem) => {
+    setIsLoading(true);
     cartItem.quantity = 1;
     const newCart = cart.filter((item) => item?.workId !== cartItem?.workId);
     setWorkList(newCart);
     toast.success(`Product removed from cart.`);
     updateCart(newCart);
+    setIsLoading(false);
   };
 
   const increaseQty = (cartItem) => {
+    setIsLoading(true);
     const newCart = cart?.map((item) => {
       if (item === cartItem) {
-        if (item?.quantity < 10) {
+        if (item?.quantity < 5) {
           item.quantity++;
           toast.success(
             `${item.quantity} ${item.title
@@ -61,7 +65,7 @@ const Cart = () => {
               .join(" ")} added in cart. `
           );
         } else {
-          toast.error(`You can't order more than 10 products at a time. `);
+          toast.error(`You can't order more than 5 products at a time. `);
         }
 
         return item;
@@ -69,9 +73,13 @@ const Cart = () => {
     });
     setWorkList(newCart);
     updateCart(newCart);
+
+    setIsLoading(false);
   };
 
   const decreaseQty = (cartItem) => {
+    setIsLoading(true);
+
     const newCart = cart?.map((item) => {
       if (item === cartItem && item.quantity > 1) {
         item.quantity -= 1;
@@ -88,6 +96,7 @@ const Cart = () => {
     });
     setWorkList(newCart);
     updateCart(newCart);
+    setIsLoading(false);
   };
 
   const calcSubtotal = (cart) => {
@@ -143,12 +152,13 @@ const Cart = () => {
                         >
                           {item?.title}
                         </Link>
-                        <span
+                        <button
+                          disabled={isLoading}
                           className=" cursor-pointer text-red-600"
                           onClick={() => removeFromCart(item)}
                         >
                           <MdOutlineDelete size={22} />
-                        </span>
+                        </button>
                       </div>
                       <p className=" mt-1 text-xs sm:text-sm  font-medium line-clamp-2 text-gray-800 dark:text-gray-300 ">
                         {item?.description}
@@ -161,24 +171,26 @@ const Cart = () => {
                           </p>
 
                           <div className=" flex items-center border-2 dark:border-gray-600 border-gray-300 w-fit rounded -mb-1">
-                            <span
+                            <button
+                              disabled={isLoading}
                               onClick={() => decreaseQty(item)}
                               className="cursor-pointer rounded-l text-gray-800 dark:text-gray-300 py-1 px-3.5 duration-100  "
                             >
                               {" "}
                               -{" "}
-                            </span>
+                            </button>
 
                             <span className="cursor-pointer  text-gray-800 dark:text-gray-300 py-1 px-3 duration-100  ">
                               {item?.quantity}
                             </span>
-                            <span
+                            <button
+                              disabled={isLoading}
                               onClick={() => increaseQty(item)}
                               className="cursor-pointer rounded-r text-gray-800 dark:text-gray-300 py-1 px-3 duration-100  "
                             >
                               {" "}
                               +{" "}
-                            </span>
+                            </button>
                           </div>
                         </div>
                         <Link

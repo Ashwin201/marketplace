@@ -3,24 +3,25 @@ import React, { useEffect, useState } from "react";
 import { categories } from "@/data";
 
 import dynamic from "next/dynamic";
-const CardSkeleton = dynamic(() => import("./Skeletons/CardSkeleton"));
-const WorkContainer = dynamic(() => import("./WorkContainer"));
+import CardSkeleton from "./Skeletons/CardSkeleton";
+import WorkContainer from "./WorkContainer";
+WorkContainer;
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [workList, setWorkList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getWorkList = async () => {
-    const res = await fetch(`/api/work/list/${selectedCategory}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res) {
-      const info = await res.json();
-      const data = info.reverse();
-      setWorkList(data);
-      setLoading(false);
+    try {
+      const res = await fetch(`/api/work/list/${selectedCategory}`);
+      if (res.ok) {
+        const info = await res.json();
+        const data = info.reverse();
+        setWorkList(data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

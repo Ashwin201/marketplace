@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
-const WorkDetail = dynamic(() => import("@/components/WorkDetail"));
-const EmptyField = dynamic(() => import("@/components/EmptyField"));
+
+import WorkDetail from "@/components/WorkDetail";
 
 import img from "@/public/no-product.webp";
+import EmptyField from "@/components/EmptyField";
 
 export async function generateMetadata({ params }) {
   const data = await getData(params.id);

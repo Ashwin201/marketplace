@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic";
-const Login = dynamic(() => import("@/components/Login"));
-
+import Login from "@/components/Login";
 export const metadata = {
   title: "Login",
   description: "Discover, Shop and Sell!",

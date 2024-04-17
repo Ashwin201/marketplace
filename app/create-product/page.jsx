@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic";
-const CreateItem = dynamic(() => import("@/components/CreateItem"));
+import CreateItem from "@/components/CreateItem";
 
 export const metadata = {
   title: "Publish Product",

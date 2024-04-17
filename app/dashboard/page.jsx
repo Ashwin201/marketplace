@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic";
-const Dashboard = dynamic(() => import("@/components/Dashboard"));
+import Dashboard from "@/components/Dashboard";
 
 export const metadata = {
   title: "Dashboard",

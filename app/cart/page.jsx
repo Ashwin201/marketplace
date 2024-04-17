@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic";
-const Cart = dynamic(() => import("@/components/Cart"));
+import Cart from "@/components/Cart";
 
 export const metadata = {
   title: "Cart",

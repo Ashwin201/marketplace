@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic";
-const Register = dynamic(() => import("@/components/Register"));
+import Register from "@/components/Register";
 
 export const metadata = {
   title: "Register",

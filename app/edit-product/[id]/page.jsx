@@ -1,9 +1,6 @@
+import EditWork from "@/components/EditWork";
+import EmptyField from "@/components/EmptyField";
 import img from "@/public/no-product.webp";
-
-import dynamic from "next/dynamic";
-const EditWork = dynamic(() => import("@/components/EditWork"));
-const EmptyField = dynamic(() => import("@/components/EmptyField"));
-
 export const metadata = {
   title: "Edit Product",
   description: "Discover, Shop and Sell!",

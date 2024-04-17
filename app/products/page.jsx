@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic";
-const Categories = dynamic(() => import("@/components/Categories"));
+import Categories from "@/components/Categories";
 
 export const metadata = {
   title: "Popular Products",
