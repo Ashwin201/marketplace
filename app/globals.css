@@ -29,21 +29,14 @@ div:active {
   box-sizing: border-box;
 }
 
-/* hide Scroll bar from chrome, safari and opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
 /* hide Scroll bar from firefox */
 html {
-  scrollbar-width: none;
   overflow-x: hidden;
 }
 
 body {
   overflow-x: hidden;
   /* hide Scroll bar from Edge ,I.E*/
-  -ms-overflow-style: none;
 }
 
 .box {

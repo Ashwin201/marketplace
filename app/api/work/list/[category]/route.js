@@ -6,14 +6,8 @@ export async function GET(req, { params }) {
     const { category } = params;
     // console.log(category);
     await connectToDB();
-    let workList;
-
-    if (category !== "All") {
-      workList = await Work.find({ category }).populate("creator");
-    } else {
-      workList = await Work.find().populate("creator");
-    }
-
+    let workList = await Work.find().populate("creator");
+    // console.log(workList);
     return NextResponse.json(workList, { status: 200 });
   } catch (err) {
     console.log(err);

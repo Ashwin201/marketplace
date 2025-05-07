@@ -86,7 +86,7 @@ const WorkCard = ({ work }) => {
             aria-label={work.title}
             className="  w-fit bg-blue-700 hover:bg-blue-800 duration-300 transition-all text-white rounded-br-md rounded-tl-md py-2 px-4 font-medium text-sm "
           >
-            Learn more
+            Know more
             <span className=" sr-only">View details for {work.title}</span>
           </Link>
         </div>
